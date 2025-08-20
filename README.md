@@ -19,7 +19,9 @@ with helper functions ├─ player.png # example sprite for the player
 Create Objects
 
 const player = createObject(“player”, 50, 50, 40, 40, null,
-“player.png”); const bloco = createObject(“bloco”, 200, 150, 60, 60,
+“player.png”);
+
+const bloco = createObject(“bloco”, 200, 150, 60, 60,
 “blue”);
 
 -   id → unique name for the object
@@ -48,9 +50,13 @@ Renders all created objects.
 
 Keyboard Input
 
-if (keys[“ArrowRight”]) player.x += 2; if (keys[“ArrowLeft”]) player.x
--= 2; if (keys[“ArrowUp”]) player.y -= 2; if (keys[“ArrowDown”])
-player.y += 2;
+if (keys[“ArrowRight”]) player.x += 2;
+
+if (keys[“ArrowLeft”]) player.x -= 2;
+
+if (keys[“ArrowUp”]) player.y -= 2;
+
+if (keys[“ArrowDown”]) player.y += 2;
 
 keys stores pressed keys.
 
@@ -58,7 +64,8 @@ keys stores pressed keys.
 
 Collision Detection
 
-if (isColliding(player, bloco)) { text(“COLLIDED WITH BLOCK!”, 10, 30,
+if (isColliding(player, bloco)) {
+text(“COLLIDED WITH BLOCK!”, 10, 30,
 “green”, 20); removeObject(“bloco”); }
 
 -   isColliding(obj1, obj2) → returns true if overlapping
