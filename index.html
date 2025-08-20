@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo com gameLib</title>
+</head>
+<body style="margin:0; background:#ddd;">
+  <script src="gameLib.js"></script>
+  <script>
+    // Player com sprite (usa player.png)
+    const player = createObject("player", 50, 50, 40, 40, null, "player.png");
+
+    // Bloco azul simples
+    const bloco = createObject("bloco", 200, 150, 60, 60, "blue");
+
+    const bloco2 = createObject("bloco2", 300, 100, 300, 300, "yellow");
+
+    function loop() {
+      clear();
+
+      // movimentação
+      if (keys["ArrowRight"]) player.x += 2;
+      if (keys["ArrowLeft"]) player.x -= 2;
+      if (keys["ArrowUp"]) player.y -= 2;
+      if (keys["ArrowDown"]) player.y += 2;
+
+      // desenha objetos
+      drawObjects();
+
+      // colisão
+      if (isColliding(player, bloco)) {
+        text("COLIDIU COM O BLOCO!", 10, 30, "green", 20);
+        removeObject("bloco");
+      }
+
+      if (isColliding(player, bloco2)) {
+        removeObject("bloco2");
+      }
+
+      requestAnimationFrame(loop);
+    }
+    loop();
+  </script>
+</body>
+</html>
